@@ -12,8 +12,6 @@ WORDS_TO_DIGITS = T.let({
 class Day01 # rubocop:disable Style/Documentation
   extend T::Sig
 
-  # write a constructor that reads the the file and saves it to an array of strings called @raw
-  # make sure that the file name is based on this ruby file name but change extention from rb to txt
   def initialize
     @raw = FileReader.read_file_to_array("#{File.basename(__FILE__, '.rb')}.txt")
   end
@@ -25,7 +23,6 @@ class Day01 # rubocop:disable Style/Documentation
   sig { returns(Integer) }
   def part1
     total = 0
-    # start a loop for each line in the file
     @raw.each do |line|
       digits = line.scan(/\d/)
       first = digits.first
