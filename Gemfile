@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-# gem "rails"
+gem 'base64'
 gem 'rubocop'
 gem 'sorbet'
 gem 'sorbet-runtime'

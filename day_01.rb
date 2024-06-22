@@ -11,39 +11,41 @@ WORDS_TO_DIGITS = T.let({
 
 class Day01 # rubocop:disable Style/Documentation
   extend T::Sig
+  include Utils
 
   def initialize
-    @raw = FileReader.read_file_to_array("#{File.basename(__FILE__, '.rb')}.txt")
+    @raw = T.let(
+      raw("#{File.basename(__FILE__, '.rb')}.txt"),
+      T::Array[String]
+    )
   end
 
+  sig { params(char: String).returns(T::Boolean) }
   def digit?(char)
-    char.match(/^\d$/)
+    !!char.match(/^\d$/)
   end
 
   sig { returns(Integer) }
   def part1
-    total = 0
-    @raw.each do |line|
-      digits = line.scan(/\d/)
-      first = digits.first
-      last = digits.last
-      total += (first + last).to_i
+    @raw.reduce(0) do |total, line|
+      digits = line.chars.select do |char|
+        digit?(char)
+      end
+      first = digits.first || ''
+      last = digits.last || ''
+      total + (first + last).to_i
     end
-    total
   end
 
   sig { returns(Integer) }
   def part2
-    total = 0
-    @raw.each do |line|
+    @raw.reduce(0) do |total, line|
       WORDS_TO_DIGITS.each do |word, num|
         line.gsub!(word, "#{word}#{num}#{word}")
       end
-      digits = line.split('').filter { |char| digit?(char) }
-      total += (digits.first + digits.last).to_i
+      digits = line.chars.filter { |char| digit?(char) }
+      total + digits.first.to_i * 10 + digits.last.to_i
     end
-
-    total
   end
 end
 
