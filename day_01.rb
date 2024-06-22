@@ -14,10 +14,7 @@ class Day01 # rubocop:disable Style/Documentation
   include Utils
 
   def initialize
-    @raw = T.let(
-      raw("#{File.basename(__FILE__, '.rb')}.txt"),
-      T::Array[String]
-    )
+    @raw = raw(__FILE__)
   end
 
   sig { params(char: String).returns(T::Boolean) }

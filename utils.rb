@@ -8,7 +8,7 @@ module Utils # rubocop:disable Style/Documentation
 
   sig { params(filename: String).returns(T::Array[String]) }
   def raw(filename)
-    file = File.open(filename)
+    file = File.open("#{File.basename(filename, '.rb')}.txt")
     file_array = file.read.split("\n")
     file.close
     file_array

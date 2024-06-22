@@ -8,19 +8,15 @@ class Day02 # rubocop:disable Style/Documentation
   extend T::Sig
   include Utils
   def initialize
-    @raw = raw("#{File.basename(__FILE__, '.rb')}.txt")
+    @raw = raw(__FILE__)
   end
 
   def part1
-    total = 0
-    @raw.each do |line|
-      puts line
-    end
+    0
   end
 
   def part2
-    total = 0
-    # start a loop for each line in the file
+    0
   end
 end
 
