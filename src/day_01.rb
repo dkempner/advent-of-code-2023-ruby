@@ -2,7 +2,7 @@
 # typed: true
 
 require 'sorbet-runtime'
-require './utils'
+require_relative './utils'
 
 WORDS_TO_DIGITS = T.let({
   'one' => 1, 'two' => 2, 'three' => 3, 'four' => 4, 'five' => 5,

@@ -2,7 +2,7 @@
 # typed: true
 
 require 'sorbet-runtime'
-require './utils'
+require_relative './utils'
 
 class Day02 # rubocop:disable Style/Documentation
   extend T::Sig
